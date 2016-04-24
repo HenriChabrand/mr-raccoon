@@ -106,7 +106,6 @@ function sendFBMessage(sender, messageData) {
             }
           };
     }
-    var messageStructured = 
     
     request({
         url: 'https://graph.facebook.com/v2.6/me/messages',
