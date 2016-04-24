@@ -66,10 +66,6 @@ function processEvent(event) {
 
         apiaiRequest.on('error', (error) => console.error(error));
         apiaiRequest.end();
-    }else{
-        text = JSON.stringify(event.postback);
-        sendFBMessage(sender, {text: "Postback received: "});
-        continue;
     }
 }
 
