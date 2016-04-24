@@ -126,19 +126,6 @@ function sendFBMessage(sender, messageData) {
             "name":"$10 Off Coupon",
             "amount":10
           }
-        ],
-        
-        "buttons":[
-          {
-            "type":"postback",
-            "title":"Buy",
-            "payload":"CUSTOM_TRIGGER_BUY"
-          },
-          {
-            "type":"postback",
-            "title":"Cancel",
-            "payload":"CUSTOM_TRIGGER_CANCEL"
-          }
         ]
       }
     }
