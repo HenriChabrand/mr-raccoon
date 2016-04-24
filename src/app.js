@@ -15,11 +15,10 @@ const FB_PAGE_ACCESS_TOKEN = process.env.FB_PAGE_ACCESS_TOKEN;
 const apiAiService = apiai(APIAI_ACCESS_TOKEN, {language: APIAI_LANG, requestSource: "fb"});
 const sessionIds = new Map();
 
-const history;
+
 
 function processEvent(event) {
     var sender = event.sender.id;
-    history = event;
       
     if (event.message && event.message.text) {
         var text = event.message.text;
@@ -74,7 +73,6 @@ function processEvent(event) {
 function sendFBMessage(sender, messageData) {
     
     var APISpeech = messageData.text;
-    messageData = { "text" : JSON.stringify(history)};
     if(APISpeech == "structured"){
         messageData = {
             "attachment": {
