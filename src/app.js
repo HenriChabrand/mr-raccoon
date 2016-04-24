@@ -35,7 +35,7 @@ function processEvent(event) {
                     {
                     name: "generic",
                     parameters: {
-                          facebook_user: "userName"
+                          facebook_user: userName
                         }
                     }]
             });
