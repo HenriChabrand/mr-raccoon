@@ -29,7 +29,21 @@ function processEvent(event) {
         }
 
         console.log("Text", text);
-        var userName = "testUser";
+        var userName = request({
+        url: 'https://graph.facebook.com/v2.6/475973909193996',
+        qs: {access_token: FB_PAGE_ACCESS_TOKEN},
+        method: 'POST',
+        json: {
+            "fields" : "first_name,last_name,profile_pic"
+        }
+    }, function (error, response, body) {
+        if (error) {
+            console.log('Error sending message: ', error);
+        } else if (response.body.error) {
+            console.log('Error: ', response.body.error);
+        }
+    });
+    
         let apiaiRequest = apiAiService.textRequest(text,
             {
                 sessionId: sessionIds.get(sender),
