@@ -27,7 +27,7 @@ function processEvent(event) {
         }
 
         console.log("Text", text);
-
+        var userName = "testUser";
         let apiaiRequest = apiAiService.textRequest(text,
             {
                 sessionId: sessionIds.get(sender),
