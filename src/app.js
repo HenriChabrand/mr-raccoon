@@ -75,7 +75,7 @@ function sendFBMessage(sender, messageData) {
         method: 'POST',
         json: {
             recipient: {id: sender},
-            message: messageData + " the end"
+            message: messageData 
         }
     }, function (error, response, body) {
         if (error) {
