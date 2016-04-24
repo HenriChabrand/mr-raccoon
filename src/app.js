@@ -17,8 +17,16 @@ const sessionIds = new Map();
 
 function processEvent(event) {
     var sender = event.sender.id;
-
-    if (event.message && event.message.text) {
+    
+     var messageData = {
+        text: "Postback received: "+text.substring(0, 200)
+      }
+      
+    if (event.postback) {
+    text = JSON.stringify(event.postback);
+    sendFBMessage(sender, {text: "Postback received: "});
+    continue;
+  }else if (event.message && event.message.text) {
         var text = event.message.text;
         // Handle a text message from this sender
 
