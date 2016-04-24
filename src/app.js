@@ -175,9 +175,13 @@ app.post('/webhook/', function (req, res) {
         var messaging_events = req.body.entry[0].messaging;
         for (var i = 0; i < messaging_events.length; i++) {
             var event = req.body.entry[0].messaging[i];
-            //processEvent(event);
+            
              if (event.message) {
-                  sendFBMessage(event.sender.id, {"text" : JSON.stringify(event)});
+                  processEvent(event);
+             }else{
+                 if (event.postback) {
+                    sendFBMessage(event.sender.id, {"text" : JSON.stringify(event)});
+                  }
              }
             
         }
