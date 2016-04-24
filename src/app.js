@@ -30,8 +30,17 @@ function processEvent(event) {
 
         let apiaiRequest = apiAiService.textRequest(text,
             {
-                sessionId: sessionIds.get(sender)
+                sessionId: sessionIds.get(sender),
+                contexts: [
+                    {
+                    name: "generic",
+                    parameters: {
+                          facebook_user: "userName"
+                        }
+                    }
             });
+
+
 
         apiaiRequest.on('response', (response) => {
             if (isDefined(response.result)) {
