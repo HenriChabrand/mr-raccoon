@@ -17,16 +17,9 @@ const sessionIds = new Map();
 
 function processEvent(event) {
     var sender = event.sender.id;
-    
-     var messageData = {
-        text: "Postback received: "+text.substring(0, 200)
-      }
+  
       
-    if (event.postback) {
-    text = JSON.stringify(event.postback);
-    sendFBMessage(sender, {text: "Postback received: "});
-    continue;
-  }else if (event.message && event.message.text) {
+    if (event.message && event.message.text) {
         var text = event.message.text;
         // Handle a text message from this sender
 
@@ -73,6 +66,10 @@ function processEvent(event) {
 
         apiaiRequest.on('error', (error) => console.error(error));
         apiaiRequest.end();
+    }else{
+        text = JSON.stringify(event.postback);
+        sendFBMessage(sender, {text: "Postback received: "});
+        continue;
     }
 }
 
