@@ -109,7 +109,7 @@ function sendFBMessage(sender, messageData) {
         json: {
             recipient: {id: sender},
             message: {
-                text:  "test"
+                text:  JSON.stringify(messageData)
                 }
         }
     }, function (error, response, body) {
