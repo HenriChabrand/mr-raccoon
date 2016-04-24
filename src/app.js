@@ -37,7 +37,7 @@ function processEvent(event) {
                     parameters: {
                           facebook_user: "userName"
                         }
-                    }
+                    }]
             });
 
 
