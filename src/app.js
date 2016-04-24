@@ -126,7 +126,7 @@ function sendFBMessage(sender, messageData) {
             "name":"$10 Off Coupon",
             "amount":10
           }
-        ]
+        ],
         
         "buttons":[
           {
