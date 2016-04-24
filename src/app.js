@@ -74,7 +74,7 @@ function sendFBMessage(sender, messageData) {
     
     var APISpeech = messageData.text;
     if(APISpeech == "structured"){
-        messageData = "message":{
+        messageData = {
     "attachment":{
       "type":"template",
       "payload":{
