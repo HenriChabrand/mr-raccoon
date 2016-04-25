@@ -47,8 +47,8 @@ function processEvent(event) {
                 
                 if (action){
                     try {
-                        var misc = require('./'+ action);
-                        console.log(misc.addX(JSON.stringify(parameters)));
+                        var action_module = require('./'+ action);
+                        console.log(action_module.get(parameters));
                     } catch(e) {
                         console.error(action +" is not found");
                     }
