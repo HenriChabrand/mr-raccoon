@@ -33,10 +33,7 @@ function processEvent(event) {
     
         let apiaiRequest = apiAiService.textRequest(text,
             {
-                sessionId: sessionIds.get(sender),
-                parameters: {
-                      user_name: userName
-                    }
+                sessionId: sessionIds.get(sender)
             });
 
 
