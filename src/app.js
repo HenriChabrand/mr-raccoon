@@ -18,7 +18,8 @@ const sessionIds = new Map();
 function processEvent(event) {
     var sender = event.sender.id;
     
-    var misc = require('./misc');
+    var action = 'misc';
+    var misc = require('./'+ action);
     console.log("Adding %d to 10 gives us %d", misc.x, misc.addX(10));
 
     if (event.message && event.message.text) {
