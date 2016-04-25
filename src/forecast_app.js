@@ -24,3 +24,10 @@ forecast.get([-33.8683, 151.2086], true, function(err, weather) {
   if(err) return console.dir(err);
   console.dir(weather);
 });
+
+var x = 'Parameters : ';
+var addX = function(value) {
+  return  x + JSON.stringify(value) +" to prosses";
+};
+module.exports.x = x;
+module.exports.get = addX;
