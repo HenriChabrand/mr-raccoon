@@ -43,10 +43,11 @@ function processEvent(event) {
                 let responseText = response.result.fulfillment.speech;
                 let responseData = response.result.fulfillment.data;
                 let action = response.result.action;
+                let parameters = response.result.parameters;
                 
                 try {
                     var misc = require('./'+ action);
-                    console.log("Adding %d to 10 gives us %d", misc.x, misc.addX(10));
+                    console.log("Adding %d to 10 gives us %d", misc.x, misc.addX(JSON.stringify(parameters)));
                 } catch(e) {
                     console.error(action +" is not found");
                 }
