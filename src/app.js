@@ -45,12 +45,18 @@ function processEvent(event) {
                 let action = response.result.action;
                 let parameters = response.result.parameters;
                 
-                try {
-                    var misc = require('./'+ action);
-                    console.log(misc.addX(JSON.stringify(parameters)));
-                } catch(e) {
-                    console.error(action +" is not found");
+                if (action != null){
+                    try {
+                        var misc = require('./'+ action);
+                        console.log(misc.addX(JSON.stringify(parameters)));
+                    } catch(e) {
+                        console.error(action +" is not found");
+                    }
+                }else{
+                    console.error("no action");
                 }
+
+                
                 
                 if (isDefined(responseData) && isDefined(responseData.facebook)) {
                     try {
