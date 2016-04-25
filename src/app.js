@@ -18,7 +18,7 @@ const sessionIds = new Map();
 function processEvent(event) {
     var sender = event.sender.id;
     
-    var action = 'misc';
+    var action = 'test';
     
     try {
         var misc = require('./'+ action);
