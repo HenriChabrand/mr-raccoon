@@ -34,13 +34,9 @@ function processEvent(event) {
         let apiaiRequest = apiAiService.textRequest(text,
             {
                 sessionId: sessionIds.get(sender),
-                contexts: [
-                    {
-                    name: "generic",
-                    parameters: {
-                          facebook_user: userName
-                        }
-                    }]
+                parameters: {
+                      user-name: userName
+                    }
             });
 
 
