@@ -15,11 +15,9 @@ const FB_PAGE_ACCESS_TOKEN = process.env.FB_PAGE_ACCESS_TOKEN;
 const apiAiService = apiai(APIAI_ACCESS_TOKEN, {language: APIAI_LANG, requestSource: "fb"});
 const sessionIds = new Map();
 
-
-
 function processEvent(event) {
     var sender = event.sender.id;
-      
+
     if (event.message && event.message.text) {
         var text = event.message.text;
         // Handle a text message from this sender
@@ -29,14 +27,11 @@ function processEvent(event) {
         }
 
         console.log("Text", text);
-        var userName = "User_Name";
-    
+
         let apiaiRequest = apiAiService.textRequest(text,
             {
                 sessionId: sessionIds.get(sender)
             });
-
-
 
         apiaiRequest.on('response', (response) => {
             if (isDefined(response.result)) {
@@ -53,7 +48,13 @@ function processEvent(event) {
                     }
                 } else if (isDefined(responseText)) {
                     console.log('Response as text message');
-                    sendFBMessage(sender, {text: responseText});
+                    // facebook API limit for text length is 320,
+                    // so we split message if needed
+                    var splittedText = splitResponse(responseText);
+
+                    for (var i = 0; i < splittedText.length; i++) {
+                        sendFBMessage(sender, {text: splittedText[i]});
+                    }
                 }
 
             }
@@ -64,43 +65,50 @@ function processEvent(event) {
     }
 }
 
-function sendFBMessage(sender, messageData) {
-    
-    var APISpeech = messageData.text;
-    if(APISpeech == "structured"){
-        messageData = {
-            "attachment": {
-              "type": "template",
-              "payload": {
-                "template_type": "generic",
-                "elements": [{
-                  "title": "First card",
-                  "subtitle": "Element #1 of an hscroll",
-                  "image_url": "http://messengerdemo.parseapp.com/img/rift.png",
-                  "buttons": [{
-                    "type": "web_url",
-                    "url": "https://www.messenger.com/",
-                    "title": "Web url"
-                  }, {
-                    "type": "postback",
-                    "title": "Postback",
-                    "payload": "Payload for first element in a generic bubble",
-                  }],
-                },{
-                  "title": "Second card",
-                  "subtitle": "Element #2 of an hscroll",
-                  "image_url": "http://messengerdemo.parseapp.com/img/gearvr.png",
-                  "buttons": [{
-                    "type": "postback",
-                    "title": "Postback",
-                    "payload": "Payload for second element in a generic bubble",
-                  }],
-                }]
-              }
-            }
-          };
+function splitResponse(str) {
+    if (str.length <= 320)
+    {
+        return [str];
     }
-    
+
+    var result = chunkString(str, 300);
+
+    return result;
+
+}
+
+function chunkString(s, len)
+{
+    var curr = len, prev = 0;
+
+    var output = [];
+
+    while(s[curr]) {
+        if(s[curr++] == ' ') {
+            output.push(s.substring(prev,curr));
+            prev = curr;
+            curr += len;
+        }
+        else
+        {
+            var currReverse = curr;
+            do {
+                if(s.substring(currReverse - 1, currReverse) == ' ')
+                {
+                    output.push(s.substring(prev,currReverse));
+                    prev = currReverse;
+                    curr = currReverse + len;
+                    break;
+                }
+                currReverse--;
+            } while(currReverse > prev)
+        }
+    }
+    output.push(s.substr(prev));
+    return output;
+}
+
+function sendFBMessage(sender, messageData) {
     request({
         url: 'https://graph.facebook.com/v2.6/me/messages',
         qs: {access_token: FB_PAGE_ACCESS_TOKEN},
@@ -169,15 +177,7 @@ app.post('/webhook/', function (req, res) {
         var messaging_events = req.body.entry[0].messaging;
         for (var i = 0; i < messaging_events.length; i++) {
             var event = req.body.entry[0].messaging[i];
-            
-             if (event.message) {
-                  processEvent(event);
-             }else{
-                 if (event.postback) {
-                    sendFBMessage(event.sender.id, {"text" : JSON.stringify(event)});
-                  }
-             }
-            
+            processEvent(event);
         }
         return res.status(200).json({
             status: "ok"
