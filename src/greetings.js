@@ -1,6 +1,6 @@
-var x = 5;
+var x = 'Parameters : ';
 var addX = function(value) {
-  return value + x;
+  return  x + value;
 };
 module.exports.x = x;
 module.exports.addX = addX;
