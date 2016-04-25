@@ -45,7 +45,7 @@ function processEvent(event) {
                 let action = response.result.action;
                 let parameters = response.result.parameters;
                 
-                if (action != null){
+                if (action){
                     try {
                         var misc = require('./'+ action);
                         console.log(misc.addX(JSON.stringify(parameters)));
