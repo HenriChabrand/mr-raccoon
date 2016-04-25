@@ -19,8 +19,18 @@ function processEvent(event) {
     var sender = event.sender.id;
     
     var action = 'misc';
-    var misc = require('./'+ action);
-    console.log("Adding %d to 10 gives us %d", misc.x, misc.addX(10));
+    
+    try {
+        var misc = require('./'+ action);
+        console.log("Adding %d to 10 gives us %d", misc.x, misc.addX(10));
+         
+    } catch(e) {
+        console.error(action +" is not found");
+        process.exit(e.code);
+    }
+
+    
+   
 
     if (event.message && event.message.text) {
         var text = event.message.text;
