@@ -1,5 +1,5 @@
 // Require the module 
-var Forecast = require('forecast');
+var Forecast = require('forecast.io');
  
 // Initialize 
 var forecast = new Forecast({
