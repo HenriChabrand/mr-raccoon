@@ -35,7 +35,7 @@ function processEvent(event) {
             {
                 sessionId: sessionIds.get(sender),
                 parameters: {
-                      user-name: userName
+                      user_name: userName
                     }
             });
 
