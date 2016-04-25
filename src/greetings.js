@@ -1,6 +1,6 @@
 var x = 'Parameters : ';
 var addX = function(value) {
-  return  x + value;
+  return  x + JSON.stringify(value) +" to prosses";
 };
 module.exports.x = x;
-module.exports.addX = addX;
+module.exports.get = addX;
