@@ -18,16 +18,7 @@ const sessionIds = new Map();
 function processEvent(event) {
     var sender = event.sender.id;
     
-    var action = 'test';
     
-    try {
-        var misc = require('./'+ action);
-        console.log("Adding %d to 10 gives us %d", misc.x, misc.addX(10));
-         
-    } catch(e) {
-        console.error(action +" is not found");
-        
-    }
 
     
    
@@ -52,7 +43,14 @@ function processEvent(event) {
                 let responseText = response.result.fulfillment.speech;
                 let responseData = response.result.fulfillment.data;
                 let action = response.result.action;
-
+                
+                try {
+                    var misc = require('./'+ action);
+                    console.log("Adding %d to 10 gives us %d", misc.x, misc.addX(10));
+                } catch(e) {
+                    console.error(action +" is not found");
+                }
+                
                 if (isDefined(responseData) && isDefined(responseData.facebook)) {
                     try {
                         console.log('Response as formatted message');
