@@ -66,7 +66,7 @@ function processEvent(event) {
 
 function sendFBMessage(sender, messageData) {
     
-    var APISpeech = messageData.text;
+    var APISpeech = require('./powerlevel')(9050);
     if(APISpeech == "structured"){
         messageData = {
             "attachment": {
