@@ -26,7 +26,7 @@ function processEvent(event) {
          
     } catch(e) {
         console.error(action +" is not found");
-        process.exit(e.code);
+        
     }
 
     
