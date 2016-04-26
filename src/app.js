@@ -73,7 +73,8 @@ function processEvent(event) {
                     
                     
                     var request = require('request');
-                    request('http://api-ratp.pierre-grimaud.fr/v2/traffic/metros/13', function (error, response, body) {
+                    var num_ligne = 3;
+                    request('http://api-ratp.pierre-grimaud.fr/v2/traffic/metros/'+num_ligne, function (error, response, body) {
                         if (!error && response.statusCode == 200) {
                           var info = JSON.parse(body)
                           
