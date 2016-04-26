@@ -77,7 +77,7 @@ function processEvent(event) {
                         if (!error && response.statusCode == 200) {
                           var info = JSON.parse(body)
                           
-                            sendFBMessage(sender, info);
+                            sendFBMessage(sender, info.response.message);
                         }else{
                             
                             sendFBMessage(sender, {erro :"erro"});
