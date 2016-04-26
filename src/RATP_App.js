@@ -12,7 +12,7 @@ function getResult(callback, parameters) {
   
   request('http://api-ratp.pierre-grimaud.fr/v2/traffic/metros/'+num_ligne, function (error, response, body) {
       if (!error && response.statusCode == 200) {
-        var info = JSON.parse(body)
+        var info = JSON.parse(body);
           result_value = {result : info.response.message};
           callback(result_value.result + num_ligne); 
 
