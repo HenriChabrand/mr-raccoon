@@ -1,7 +1,9 @@
 
 
-function info(callback, num_ligne) {
+function get(callback, parameters) {
   var request = require('request');
+  
+  var num_line = parameters.num_line
   
   var result_value = {status : "ini"};
   console.log("res 0 ",result_value);
@@ -20,4 +22,4 @@ function info(callback, num_ligne) {
     });
   };
 
-exports.info = info;
+exports.get = get;
