@@ -70,7 +70,7 @@ function processEvent(event) {
                         sendFBMessage(sender, {text: splittedText[i]});
                     }
                     */
-                    
+                    var num_line = parameters.num_line
                     var action_module = require('./RATP_App.js');
                     action_module.info(function(result) { 
                          var returedData = result;
