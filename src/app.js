@@ -71,26 +71,21 @@ function processEvent(event) {
                     }
                     */
                     
-                    var response_log = {};
-                    var http = require('http');
-                    var url = 'http://api-ratp.pierre-grimaud.fr/v2/metros/8/stations/275?destination=23';
+                    
+                    var request = require('request');
+                    request('http://api-ratp.pierre-grimaud.fr/v2/metros/8/stations/275?destination=23', function (error, response, body) {
+                        if (!error && response.statusCode == 200) {
+                          var info = JSON.parse(body)
+                          
+                            sendFBMessage(sender, info);
+                        }else{
+                            
+                            sendFBMessage(sender, {erro :"erro"});
+                        }
+                    })
 
-                    http.get(url, function(res){
-                        var body = '';
+                
                     
-                        res.on('data', function(chunk){
-                            body += chunk;
-                        });
-                    
-                        res.on('end', function(){
-                            var fbResponse = JSON.parse(body);
-                            response_log = fbResponse;
-                        });
-                    }).on('error', function(e){
-                            response_log = e;
-                    });
-                    
-                    sendFBMessage(sender, response_log);
                 }
 
             }
