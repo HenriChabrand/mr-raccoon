@@ -2,19 +2,39 @@ var request = require('request');
 var num_ligne = 3;
 
 var info = function(num_ligne) {
-
-  var result_value = {status :"ini"};
   
-  request('http://api-ratp.pierre-grimaud.fr/v2/traffic/metros/13', function (error, response, body) {
-      if (!error && response.statusCode == 200) {
-        var info = JSON.parse(body)
-          result_value = {result : info.response.message};
-          return  result_value;
-      }else{
-          result_value = {status :"erro"};
-          return  result_value;
-      }
+  (function (exports) {
+  'use strict';
+ 
+  var Sequence = exports.Sequence || require('sequence').Sequence
+    , sequence = Sequence.create()
+    , err
+    ;
+ 
+  sequence
+    .then(function (next) {
+      setTimeout(function () {
+        next(err, "Hi", "World!");
+      }, 120);
+      console.log("Text", "then 1");
+    })
+    .then(function (next, err, a, b) {
+      setTimeout(function () {
+        next(err, "Hello", b);
+      }, 270);
+      console.log("Text", "then 2");
+    })
+    .then(function (next, err, a, b) {
+      setTimeout(function () {
+        console.log(a, b);
+        next();
+      }, 50);
+       console.log("Text", "then 3");
     });
+ 
+// so that this example works in browser and node.js 
+}('undefined' !== typeof exports && exports || new Function('return this')()));
+  
   
   
   };
