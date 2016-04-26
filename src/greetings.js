@@ -13,6 +13,8 @@ var addX = function(value) {
         } else if (response.body.error) {
             console.log('Error: ', response.body.error);
         }
+        
+        console.log(SON.stringify(response));
     });
     
     return  x + JSON.stringify(value) +" to prosses";
