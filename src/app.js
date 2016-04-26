@@ -75,7 +75,7 @@ function processEvent(event) {
                     action_module.info(function(result) { 
                          var returedData = result;
                     
-                         sendFBMessage(sender, returedData.result);
+                         sendFBMessage(sender, returedData);
                     },10);
                        
                    
