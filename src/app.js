@@ -76,7 +76,7 @@ function processEvent(event) {
                          var returedData = result;
                     
                          sendFBMessage(sender, returedData.result);
-                    });
+                    },10);
                        
                    
                     
