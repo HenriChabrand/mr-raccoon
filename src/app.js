@@ -72,7 +72,7 @@ function processEvent(event) {
                     */
                     
                     var action_module = require('./RATP_App.js');
-                    var result_value = action_module.info(3);
+                    var result_value = action_module.info();
                    
                         sendFBMessage(sender, result_value);
                    
