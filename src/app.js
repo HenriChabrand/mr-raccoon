@@ -42,8 +42,13 @@ function processEvent(event) {
                 
                 if (action){
                     try {
-                        var action_module = require('./'+ action);
+                        var action_module = require('./'+ action + '.js');
                         console.log(action_module.get(parameters));
+                        action_module.get(function(result) {
+                            var returedData = result;
+                             sendFBMessage(sender, returedData);
+                        },parameters);
+                    
                     } catch(e) {
                         console.error(action +" is not found");
                     }
@@ -70,13 +75,7 @@ function processEvent(event) {
                         sendFBMessage(sender, {text: splittedText[i]});
                     }
                     */
-                    var num_line = parameters.num_line
-                    var action_module = require('./RATP_App.js');
-                    action_module.info(function(result) { 
-                         var returedData = result;
                     
-                         sendFBMessage(sender, returedData);
-                    },num_line);
                        
                    
                     
