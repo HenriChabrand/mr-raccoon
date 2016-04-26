@@ -14,10 +14,12 @@ var info = function(num_ligne) {
       var info = JSON.parse(body)
       console.log("RATP : IF :", info.response.message);
         result_value = {result : info.response.message};
+        callback(result_value);
         console.log("RATP : result 1 :", result_value);
     }else{
         console.log("RATP : ", 'Ini else');
         result_value = {status :"erro"};
+        callback(result_value);
     }
   });
 console.log("RATP : result 2 :", result_value);
