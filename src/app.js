@@ -42,11 +42,11 @@ function processEvent(event) {
                 
                 if (action){
                     try {
-                        console.error(action +" is started");
+                        console.log(action +" is started");
                         var action_module = require('./'+ action + '.js');
                         action_module.getResult(function(result) {
-                                console.error(action + " : " + result);
-                             sendFBMessage(sender, result);
+                            console.log(action + " : " + result);
+                            sendFBMessage(sender, result);
                         },parameters);
                     
                     } catch(e) {
