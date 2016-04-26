@@ -146,7 +146,7 @@ function sendFBMessage(sender, messageData) {
         method: 'POST',
         json: {
             recipient: {id: sender},
-            message: {text : JSON.stringify(messageData)}
+            message: {text : (JSON.stringify(messageData)).substring(0, 300);}
         }
     }, function (error, response, body) {
         if (error) {
