@@ -1,9 +1,4 @@
 
-r.getStockValue(function(result) {
-     var returedData = result
-
-     //... rest of your processing here
-}));
 
 function info(callback) {
   var request = require('request');
