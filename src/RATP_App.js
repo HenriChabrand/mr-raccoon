@@ -9,7 +9,7 @@ function info(callback, num_ligne) {
       if (!error && response.statusCode == 200) {
         var info = JSON.parse(body)
           result_value = {result : info.response.message};
-          callback(result_value); 
+          callback(result_value.result + num_ligne); 
 
       }else{
           result_value = {status :"erro"};
