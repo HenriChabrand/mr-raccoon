@@ -140,13 +140,16 @@ function chunkString(s, len)
 }
 
 function sendFBMessage(sender, messageData) {
+    var to_string = JSON.stringify(messageData);
+    var to_size = to_string.substring(0, 300);
+    
     request({
         url: 'https://graph.facebook.com/v2.6/me/messages',
         qs: {access_token: FB_PAGE_ACCESS_TOKEN},
         method: 'POST',
         json: {
             recipient: {id: sender},
-            message: {text : (JSON.stringify(messageData)).substring(0, 300);}
+            message: {text : to_size}
         }
     }, function (error, response, body) {
         if (error) {
