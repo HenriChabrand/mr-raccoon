@@ -1,6 +1,6 @@
 
 
-function get(callback, parameters) {
+function getResult(callback, parameters) {
   var request = require('request');
   
   var num_line = parameters.num_line;
@@ -22,4 +22,4 @@ function get(callback, parameters) {
     });
   };
 
-exports.get = get;
+exports.getResult = getResult;
