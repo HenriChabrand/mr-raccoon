@@ -2,8 +2,8 @@ var request = require('request');
 var num_ligne = 3;
 
 var info = function(num_ligne) {
-  
-  return { end : "end"};
+  var res = {end : "end"};
+  return res;
   };
 
 
