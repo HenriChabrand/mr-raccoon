@@ -41,23 +41,28 @@ function processEvent(event) {
                 let parameters = response.result.parameters;
                 
                 if (action){
+                    
                     try {
-                        console.log(action +" is started");
+                        console.log(action +" : start");
                         var action_module = require('./'+ action + '.js');
                         action_module.getResult(function(result) {
                             console.log(action + " : " + result);
-                            sendFBMessage(sender, result);
+                            
+                            var splittedText = splitResponse(result);
+                        
+                            for (var i = 0; i < splittedText.length; i++) {
+                                sendFBMessage(sender, {text: splittedText[i]});
+                            }
+                            
                         },parameters);
                     
                     } catch(e) {
-                        console.error(action +" is not found");
+                        console.log(action +" is not found");
                     }
+                    
                 }else{
-                    console.error("no action");
+                    console.log("no action");
                 
-
-                    
-                    
                     if (isDefined(responseData) && isDefined(responseData.facebook)) {
                         try {
                             console.log('Response as formatted message');
@@ -74,8 +79,6 @@ function processEvent(event) {
                         for (var i = 0; i < splittedText.length; i++) {
                             sendFBMessage(sender, {text: splittedText[i]});
                         }
-                        
-                        
                     }      
                    
                     
@@ -133,8 +136,11 @@ function chunkString(s, len)
 }
 
 function sendFBMessage(sender, messageData) {
+    
+    /*
     var to_string = JSON.stringify(messageData);
     var to_size = to_string.substring(0, 300);
+    */
     
     request({
         url: 'https://graph.facebook.com/v2.6/me/messages',
@@ -142,7 +148,7 @@ function sendFBMessage(sender, messageData) {
         method: 'POST',
         json: {
             recipient: {id: sender},
-            message: {text : to_size}
+            message: messageData
         }
     }, function (error, response, body) {
         if (error) {
