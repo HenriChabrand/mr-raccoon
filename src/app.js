@@ -17,11 +17,6 @@ const sessionIds = new Map();
 
 function processEvent(event) {
     var sender = event.sender.id;
-    
-    
-
-    
-   
 
     if (event.message && event.message.text) {
         var text = event.message.text;
@@ -70,10 +65,13 @@ function processEvent(event) {
                     // facebook API limit for text length is 320,
                     // so we split message if needed
                     var splittedText = splitResponse(responseText);
-
+                    /*
                     for (var i = 0; i < splittedText.length; i++) {
                         sendFBMessage(sender, {text: splittedText[i]});
                     }
+                    */
+                    
+                    sendFBMessage(sender, {text: "test"});
                 }
 
             }
