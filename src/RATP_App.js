@@ -6,10 +6,8 @@ var info = function(num_ligne) {
       if (!error && response.statusCode == 200) {
         var info = JSON.parse(body)
           result_value = {result : info.response.message};
-          return  result_value;
       }else{
           result_value = {status :"erro"};
-          return  result_value;
       }
       
   console.log("res 1 ",result_value);
