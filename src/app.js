@@ -73,7 +73,7 @@ function processEvent(event) {
                     
                     
                     var request = require('request');
-                    request('http://api-ratp.pierre-grimaud.fr/v2/metros/8/stations/275?destination=23', function (error, response, body) {
+                    request('http://api-ratp.pierre-grimaud.fr/v2/traffic/metros/13', function (error, response, body) {
                         if (!error && response.statusCode == 200) {
                           var info = JSON.parse(body)
                           
