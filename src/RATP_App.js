@@ -36,7 +36,7 @@ var info = function(num_ligne) {
 }('undefined' !== typeof exports && exports || new Function('return this')()));
   
   
-  
+  return { end : "end"};
   };
 
 
