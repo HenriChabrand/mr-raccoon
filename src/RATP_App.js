@@ -19,7 +19,7 @@ var info = function(num_ligne) {
     }else{
         console.log("RATP : ", 'Ini else');
         result_value = {status :"erro"};
-        callback(result_value);
+        
     }
   });
 console.log("RATP : result 2 :", result_value);
