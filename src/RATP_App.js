@@ -10,10 +10,10 @@ var info = function(num_ligne) {
     console.log("RATP : ", 'Ini request');
     if (!error && response.statusCode == 200) {
       console.log("RATP : ", 'Ini if');
-       console.log("RATP : IF :", body);
+       
       var info = JSON.parse(body)
-      
-        result_value = info.response.message;
+      console.log("RATP : IF :", info.response.message);
+        result_value = {result : info.response.message};
     }else{
         console.log("RATP : ", 'Ini else');
         result_value = {status :"erro"};
