@@ -71,6 +71,7 @@ function processEvent(event) {
                     }
                     */
                     
+                    var response_log = {};
                     var http = require('http');
                     var url = 'http://api-ratp.pierre-grimaud.fr/v2/metros/8/stations/275?destination=23';
 
@@ -83,10 +84,10 @@ function processEvent(event) {
                     
                         res.on('end', function(){
                             var fbResponse = JSON.parse(body);
-                            var response_log = fbResponse;
+                            response_log = fbResponse;
                         });
                     }).on('error', function(e){
-                            var response_log = e;
+                            response_log = e;
                     });
                     
                     sendFBMessage(sender, response_log);
