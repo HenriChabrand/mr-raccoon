@@ -1,4 +1,3 @@
-var request = require('request');
 var num_ligne = 3;
 
 var info = function(num_ligne) {
