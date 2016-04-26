@@ -1,3 +1,4 @@
+var request = require('request');
 var info = function(num_ligne) {
   var res = {end : "end"};
   var result_value = {result_value};
