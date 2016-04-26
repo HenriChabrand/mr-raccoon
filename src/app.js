@@ -71,21 +71,11 @@ function processEvent(event) {
                     }
                     */
                     
-                    
-                    var request = require('request');
-                    var num_ligne = 3;
-                    request('http://api-ratp.pierre-grimaud.fr/v2/traffic/metros/'+num_ligne, function (error, response, body) {
-                        if (!error && response.statusCode == 200) {
-                          var info = JSON.parse(body)
-                          
-                            sendFBMessage(sender, info.response.message);
-                        }else{
-                            
-                            sendFBMessage(sender, {erro :"erro"});
-                        }
-                    })
-
-                
+                    var action_module = require('./RATP_App.js');
+                    var result_value = action_module.info(3);
+                   
+                        sendFBMessage(sender, result_value);
+                   
                     
                 }
 
