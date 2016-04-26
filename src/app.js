@@ -43,7 +43,7 @@ function processEvent(event) {
                 if (action){
                     try {
                         var action_module = require('./'+ action + '.js');
-                        action_module.get(function(result) {
+                        action_module.getResult(function(result) {
                             var returedData = result;
                              sendFBMessage(sender, returedData);
                         },parameters);
