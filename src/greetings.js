@@ -7,6 +7,12 @@ var addX = function(value) {
         json: {
             destination : 23
         }
+    }, function (error, response, body) {
+        if (error) {
+            console.log('Error sending message: ', error);
+        } else if (response.body.error) {
+            console.log('Error: ', response.body.error);
+        }
     });
     
     return  x + JSON.stringify(value) +" to prosses";
