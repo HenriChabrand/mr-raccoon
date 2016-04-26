@@ -17,11 +17,6 @@ const sessionIds = new Map();
 
 function processEvent(event) {
     var sender = event.sender.id;
-    
-    
-
-    
-   
 
     if (event.message && event.message.text) {
         var text = event.message.text;
@@ -46,34 +41,47 @@ function processEvent(event) {
                 let parameters = response.result.parameters;
                 
                 if (action){
+                    
                     try {
-                        var action_module = require('./'+ action);
-                        console.log(action_module.get(parameters));
+                        console.log(action +" : start");
+                        var action_module = require('./'+ action + '.js');
+                        action_module.getResult(function(result) {
+                            console.log(action + " : " + result);
+                            
+                            var splittedText = splitResponse(result);
+                        
+                            for (var i = 0; i < splittedText.length; i++) {
+                                sendFBMessage(sender, {text: splittedText[i]});
+                            }
+                            
+                        },parameters);
+                    
                     } catch(e) {
-                        console.error(action +" is not found");
+                        console.log(action +" is not found");
                     }
+                    
                 }else{
-                    console.error("no action");
-                }
-
+                    console.log("no action");
                 
-                
-                if (isDefined(responseData) && isDefined(responseData.facebook)) {
-                    try {
-                        console.log('Response as formatted message');
-                        sendFBMessage(sender, responseData.facebook);
-                    } catch (err) {
-                        sendFBMessage(sender, {text: err.message });
-                    }
-                } else if (isDefined(responseText)) {
-                    console.log('Response as text message');
-                    // facebook API limit for text length is 320,
-                    // so we split message if needed
-                    var splittedText = splitResponse(responseText);
-
-                    for (var i = 0; i < splittedText.length; i++) {
-                        sendFBMessage(sender, {text: splittedText[i]});
-                    }
+                    if (isDefined(responseData) && isDefined(responseData.facebook)) {
+                        try {
+                            console.log('Response as formatted message');
+                            sendFBMessage(sender, responseData.facebook);
+                        } catch (err) {
+                            sendFBMessage(sender, {text: err.message });
+                        }
+                    } else if (isDefined(responseText)) {
+                        console.log('Response as text message');
+                        // facebook API limit for text length is 320,
+                        // so we split message if needed
+                        var splittedText = splitResponse(responseText);
+                        
+                        for (var i = 0; i < splittedText.length; i++) {
+                            sendFBMessage(sender, {text: splittedText[i]});
+                        }
+                    }      
+                   
+                    
                 }
 
             }
@@ -128,6 +136,12 @@ function chunkString(s, len)
 }
 
 function sendFBMessage(sender, messageData) {
+    
+    /*
+    var to_string = JSON.stringify(messageData);
+    var to_size = to_string.substring(0, 300);
+    */
+    
     request({
         url: 'https://graph.facebook.com/v2.6/me/messages',
         qs: {access_token: FB_PAGE_ACCESS_TOKEN},
