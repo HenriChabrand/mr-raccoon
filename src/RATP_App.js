@@ -20,7 +20,7 @@ var info = function(num_ligne) {
         result_value = {status :"erro"};
     }
   });
-console.log("RATP : result 1 :", result_value);
+console.log("RATP : result 2 :", result_value);
     return  result_value;
 };
 
