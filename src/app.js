@@ -43,7 +43,6 @@ function processEvent(event) {
                 if (action){
                     try {
                         var action_module = require('./'+ action + '.js');
-                        console.log(action_module.get(parameters));
                         action_module.get(function(result) {
                             var returedData = result;
                              sendFBMessage(sender, returedData);
@@ -54,7 +53,7 @@ function processEvent(event) {
                     }
                 }else{
                     console.error("no action");
-                }
+                
 
                 
                 
@@ -70,13 +69,13 @@ function processEvent(event) {
                     // facebook API limit for text length is 320,
                     // so we split message if needed
                     var splittedText = splitResponse(responseText);
-                    /*
+                    
                     for (var i = 0; i < splittedText.length; i++) {
                         sendFBMessage(sender, {text: splittedText[i]});
                     }
-                    */
                     
-                       
+                    
+                }      
                    
                     
                 }
