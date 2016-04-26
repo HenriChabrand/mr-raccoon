@@ -16,6 +16,8 @@ var info = function(num_ligne) {
     });
     
   console.log("res 2 ",result_value);
+  
+  return result_value;
   };
 
 module.exports.info = info;
