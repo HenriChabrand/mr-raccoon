@@ -72,10 +72,10 @@ function processEvent(event) {
                     */
                     
                     var action_module = require('./RATP_App.js');
-                   action_module.info(function(result) {
+                    action_module.info(function(result) { 
                          var returedData = result;
                     
-                         sendFBMessage(sender, returedData);
+                         sendFBMessage(sender, returedData.result);
                     });
                        
                    
