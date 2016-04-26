@@ -1,10 +1,10 @@
-
+var request = require('request');
 var num_ligne = 3;
 
 var info = function(num_ligne) {
   
   var result_value = {status :"ini"};
-  var request = require('request');
+  
   request('http://api-ratp.pierre-grimaud.fr/v2/traffic/metros/13', function (error, response, body) {
     if (!error && response.statusCode == 200) {
       var info = JSON.parse(body)
@@ -14,7 +14,7 @@ var info = function(num_ligne) {
         
         result_value = {status :"erro"};
     }
-  })
+  });
 
     return  result_value;
 };
