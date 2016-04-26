@@ -71,6 +71,7 @@ function processEvent(event) {
                     }
                     */
                     
+                    var http = require('http');
                     var url = 'http://api-ratp.pierre-grimaud.fr/v2/metros/8/stations/275?destination=23';
 
                     http.get(url, function(res){
