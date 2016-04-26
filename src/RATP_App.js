@@ -3,7 +3,7 @@
 function get(callback, parameters) {
   var request = require('request');
   
-  var num_line = parameters.num_line
+  var num_line = parameters.num_line;
   
   var result_value = {status : "ini"};
   console.log("res 0 ",result_value);
