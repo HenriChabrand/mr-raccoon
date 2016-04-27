@@ -1,13 +1,13 @@
 function getResult(callback, parameters) {
 
-    if(parameters.geo_city){
+    parameters.lat = 48.856614;
+    parameters.lng = 2.352221;
+    if(parameters.lat&&parameters.lng){
         //Put your action here
-        var city = parameters.geo_city;
-        
-        require('request')('https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyDLGejsdWAYT5BKgqqvmRQUoWtT34OWfE8&address='+city, function (error, response, body) {
+        require('request')('https://api.forecast.io/forecast/5fe274f52b8b66a83b716c68ff4da61f/'+parameters.lat+','+parameters.lng, function (error, response, body) {
             if (!error && response.statusCode == 200) {
               var info = JSON.parse(body);
-              callback(JSON.stringify(info.results[0].geometry.location)); 
+              callback(JSON.stringify(info)); 
             }else{
                 callback({erro :"the request failed"});
             }
