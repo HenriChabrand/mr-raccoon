@@ -38,9 +38,10 @@ function processEvent(event) {
                 let responseText = response.result.fulfillment.speech;
                 let responseData = response.result.fulfillment.data;
                 let action = response.result.action;
+                let actionIncomplete = response.result.actionIncomplete;
                 let parameters = response.result.parameters;
                 
-                if (action){
+                if (action&&!actionIncomplete){
                     
                     try {
                         console.log(action +" : start");
