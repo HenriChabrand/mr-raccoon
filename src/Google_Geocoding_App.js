@@ -7,7 +7,7 @@ function getResult(callback, parameters) {
         require('request')('https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyDLGejsdWAYT5BKgqqvmRQUoWtT34OWfE8&address='+city, function (error, response, body) {
             if (!error && response.statusCode == 200) {
               var info = JSON.parse(body);
-              callback({lat : info.results[0].geometry.location.lat, lng : info.results[0].geometry.location.lng}); 
+              callback(JSON.stringify(info)); 
             }else{
                 callback({erro :"the request failed"});
             }
