@@ -2,7 +2,7 @@
 
 function getResult(callback, parameters) {
 
-if(isDefined(parameters.num_line)){
+if(parameters.num_line){
     //Put your action here
     var num_line = parameters.num_line;
     
