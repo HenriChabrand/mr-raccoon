@@ -15,9 +15,8 @@ function getResult(callback, parameters) {
             }
           });
           
-        };
-        
     }else{
+            
         callback({erro :"parameters are missing"});
     }
     
