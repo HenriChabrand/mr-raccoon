@@ -46,7 +46,7 @@ function processEvent(event) {
                     try {
                         console.log(action +" : start");
                         sendFBMessage(sender, {text: "I ask "+action+"..."});
-                        var action_module = require('./'+ action + '.js');
+                        var action_module = require('./'+ action + '_App.js');
                         action_module.getResult(function(result) {
                             console.log(action + " : " + result);
                             
