@@ -2,6 +2,14 @@ function getResult(callback, parameters) {
 
     parameters.lat = 48.856614;
     parameters.lng = 2.352221;
+    
+    var action_module = require('./'+ action + '_App.js');
+    action_module.getResult(function(result) {
+        console.log(action + " : " + result);
+        parameters = result;
+        
+    },parameters);
+    
     if(parameters.lat&&parameters.lng){
         //Put your action here
         require('request')('https://api.forecast.io/forecast/5fe274f52b8b66a83b716c68ff4da61f/'+parameters.lat+','+parameters.lng, function (error, response, body) {
