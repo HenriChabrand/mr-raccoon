@@ -7,10 +7,7 @@ function getResult(callback, parameters) {
     action_module.getResult(function(result) {
         console.log("Weather -> Geocode : " + result);
         parameters = result;
-    },parameters);   
-    
-    
-    if(parameters.lat&&parameters.lng){
+        if(parameters.lat&&parameters.lng){
         //Put your action here
         require('request')('https://api.forecast.io/forecast/5fe274f52b8b66a83b716c68ff4da61f/'+parameters.lat+','+parameters.lng, function (error, response, body) {
             if (!error && response.statusCode == 200) {
@@ -21,10 +18,14 @@ function getResult(callback, parameters) {
             }
           });
           
-    }else{
-            
-        callback({erro :"parameters are missing"});
-    }
+        }else{
+                
+            callback({erro :"parameters are missing"});
+        }
+    },parameters);   
+    
+    
+    
     
     
     
