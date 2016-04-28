@@ -8,10 +8,9 @@ function getResult(callback, parameters) {
         console.log("Weather -> Geocode : " + newParameters);
         
         if(newParameters){
-            console.log("Weather : " + newParameters);
-             console.log("Weather : " + newParameters.lng);
-            console.log("Weather : " + newParameters.lat);
-             console.log("Weather : " + newParameters.lng);
+            console.log("Weather all : " + newParameters);
+            console.log("Weather lat : " + newParameters.lat);
+             console.log("Weather lng : " + newParameters.lng);
         //Put your action here
         require('request')('https://api.forecast.io/forecast/5fe274f52b8b66a83b716c68ff4da61f/'+newParameters.lat+','+newParameters.lng, function (error, response, body) {
             if (!error && response.statusCode == 200) {
