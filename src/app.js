@@ -50,7 +50,9 @@ function processEvent(event) {
                         action_module.getResult(function(result) {
                             console.log(action + " : " + result);
                             
-                            var splittedText = splitResponse(result);
+                            var toText = JSON.stringify(result);
+                            
+                            var splittedText = splitResponse(toText);
                         
                             for (var i = 0; i < splittedText.length; i++) {
                                 sendFBMessage(sender, {text: splittedText[i]});
@@ -150,7 +152,7 @@ function sendFBMessage(sender, messageData) {
         method: 'POST',
         json: {
             recipient: {id: sender},
-            message: {text : JSON.stringify(messageData)}
+            message: messageData
         }
     }, function (error, response, body) {
         if (error) {
