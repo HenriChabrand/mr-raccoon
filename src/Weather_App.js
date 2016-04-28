@@ -4,15 +4,15 @@ function getResult(callback, parameters) {
     parameters.lng = 2.352221;
     
     var action_module = require('./Google_Geocoding_App.js');
-    action_module.getResult(function(result) {
-        console.log("Weather -> Geocode : " + result);
-        parameters = result;
-        if(parameters){
+    action_module.getResult(function(newParameters) {
+        console.log("Weather -> Geocode : " + newParameters);
+        
+        if(newParameters){
             
-            console.log("Weather : " + parameters.lat);
-             console.log("Weather : " + parameters.lng);
+            console.log("Weather : " + newParameters.lat);
+             console.log("Weather : " + newParameters.lng);
         //Put your action here
-        require('request')('https://api.forecast.io/forecast/5fe274f52b8b66a83b716c68ff4da61f/'+parameters.lat+','+parameters.lng, function (error, response, body) {
+        require('request')('https://api.forecast.io/forecast/5fe274f52b8b66a83b716c68ff4da61f/'+newParameters.lat+','+newParameters.lng, function (error, response, body) {
             if (!error && response.statusCode == 200) {
               var info = JSON.parse(body);
               callback(JSON.stringify(info.currently.summary)); 
@@ -22,7 +22,7 @@ function getResult(callback, parameters) {
           });
           
         }else{
-                console.log("Weather : erro" + parameters);
+                console.log("Weather : erro" + newParameters);
             callback("parameters are missing");
         }
     },parameters);   
