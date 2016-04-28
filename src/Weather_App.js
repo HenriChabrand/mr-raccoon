@@ -8,7 +8,7 @@ function getResult(callback, parameters) {
         console.log("Weather -> Geocode : " + result);
         parameters = result;
         
-    },parameters);
+    
     
     if(parameters.lat&&parameters.lng){
         //Put your action here
@@ -25,6 +25,8 @@ function getResult(callback, parameters) {
             
         callback({erro :"parameters are missing"});
     }
+    
+    },parameters);
     
 }
 
