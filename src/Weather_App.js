@@ -5,7 +5,7 @@ function getResult(callback, parameters) {
     
     var action_module = require('./Google_Geocoding_App.js');
     action_module.getResult(function(result) {
-        console.log(action + " : " + result);
+        console.log("Weather -> Geocode : " + result);
         parameters = result;
         
     },parameters);
