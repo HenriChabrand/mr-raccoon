@@ -3,7 +3,7 @@ function getResult(callback, parameters) {
     parameters.lat = 48.856614;
     parameters.lng = 2.352221;
     
-    var action_module = require('./'+ action + '_App.js');
+    var action_module = require('./Google_Geocoding_App.js');
     action_module.getResult(function(result) {
         console.log(action + " : " + result);
         parameters = result;
