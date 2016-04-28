@@ -22,7 +22,7 @@ function getResult(callback, parameters) {
           });
           
         }else{
-                
+                console.log("Weather : erro" + parameters);
             callback({erro :"parameters are missing"});
         }
     },parameters);   
