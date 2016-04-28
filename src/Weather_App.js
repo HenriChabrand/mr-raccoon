@@ -17,13 +17,13 @@ function getResult(callback, parameters) {
               var info = JSON.parse(body);
               callback(JSON.stringify(info.currently.summary)); 
             }else{
-                callback({erro :"the request failed"});
+                callback("the request failed");
             }
           });
           
         }else{
                 console.log("Weather : erro" + parameters);
-            callback({erro :"parameters are missing"});
+            callback("parameters are missing");
         }
     },parameters);   
     
