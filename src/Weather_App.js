@@ -7,7 +7,7 @@ function getResult(callback, parameters) {
     action_module.getResult(function(result) {
         console.log("Weather -> Geocode : " + result);
         parameters = result;
-        if(parameters.lat&&parameters.lng){
+        if(parameters){
             
             console.log("Weather : " + parameters.lat);
              console.log("Weather : " + parameters.lng);
