@@ -8,7 +8,8 @@ function getResult(callback, parameters) {
         console.log("Weather -> Geocode : " + newParameters);
         
         if(newParameters){
-            
+            console.log("Weather : " + newParameters);
+             console.log("Weather : " + newParameters.lng);
             console.log("Weather : " + newParameters.lat);
              console.log("Weather : " + newParameters.lng);
         //Put your action here
