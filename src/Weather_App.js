@@ -15,7 +15,7 @@ function getResult(callback, parameters) {
         require('request')('https://api.forecast.io/forecast/5fe274f52b8b66a83b716c68ff4da61f/'+newParameters.lat+','+newParameters.lng, function (error, response, body) {
             if (!error && response.statusCode == 200) {
               var info = JSON.parse(body);
-              callback(JSON.stringify(info.currently.summary)); 
+              callback(JSON.stringify(info.currently.temperature)); 
             }else{
                 callback("the request failed");
             }
