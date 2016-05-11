@@ -17,7 +17,7 @@ const sessionIds = new Map();
 
 function processEvent(event) {
     
-    console.log("event",event);
+    console.log("event",JSON.stringify(event));
     var sender = event.sender.id;
 
     if (event.message && event.message.text) {
