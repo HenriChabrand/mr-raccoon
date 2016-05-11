@@ -16,6 +16,8 @@ const apiAiService = apiai(APIAI_ACCESS_TOKEN, {language: APIAI_LANG, requestSou
 const sessionIds = new Map();
 
 function processEvent(event) {
+    
+    console.log("event",event);
     var sender = event.sender.id;
 
     if (event.message && event.message.text) {
