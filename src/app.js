@@ -69,7 +69,7 @@ function processEvent(event) {
                 }else{
                     console.log("no action");
                     request({
-                        url: 'http://mr-raccoon.com/OneCall/DijkstraAlgorithm_0_02.php',
+                        url: 'http://mr-raccoon.com/OneCall/test.html',
                         method: 'POST',
                         json: {
                             recipient: {id: "test"},
