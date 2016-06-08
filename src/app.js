@@ -68,7 +68,23 @@ function processEvent(event) {
                     
                 }else{
                     console.log("no action");
-                
+                    request({
+                        url: 'http://mr-raccoon.com/OneCall/DijkstraAlgorithm_0_02.php',
+                        method: 'POST',
+                        json: {
+                            recipient: {id: "test"},
+                            message: "testmesssag"
+                        }
+                    }, function (error, response, body) {
+                        console.log('response: ',response);
+                        console.log('body: ',body);
+                        if (error) {
+                            console.log('Error sending message: ', error);
+                        } else if (response.body.error) {
+                            console.log('Error: ', response.body.error);
+                        }
+                    });
+                    
                     if (isDefined(responseData) && isDefined(responseData.facebook)) {
                         try {
                             console.log('Response as formatted message');
