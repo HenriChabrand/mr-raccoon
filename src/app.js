@@ -52,7 +52,7 @@ function processEvent(event) {
                         action_module.getResult(function(result) {
                             console.log(action + " : " + result);
                             
-                            var toText = JSON.stringify(result);
+                            var toText = JSON.stringify(result.trim());
                             
                             var splittedText = splitResponse(toText);
                         
