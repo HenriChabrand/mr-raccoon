@@ -78,7 +78,9 @@ function processEvent(event) {
                           method: 'POST',
                           json: parameters
                     }, function (error, response, body) {
-                        console.log('body ----->: ',body.message);
+                        
+                        console.log('response ----->: ',response);
+                        console.log('body ----->: ',body);
                         if (error) {
                             console.log('Error sending message: ', error);
                         } else if (response.body.error) {
