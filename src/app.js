@@ -73,14 +73,15 @@ function processEvent(event) {
                         //url: 'http://mr-raccoon.com/api.php',
                         //method: 'POST',
                        // body:    "mes=heydude"
-                       
+                        headers: {'content-type' : 'Content-Type: application/json'},
                        url: 'http://mr-raccoon.com/OneCall/api.php',
                           method: 'POST',
                           json: parameters
                     }, function (error, response, body) {
                         
-                        console.log('response ----->: ',response);
+                       // console.log('response ----->: ',response);
                         console.log('body ----->: ',body);
+                         console.log('body.message ----->: ',body.message);
                         if (error) {
                             console.log('Error sending message: ', error);
                         } else if (response.body.error) {
