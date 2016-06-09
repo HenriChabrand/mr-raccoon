@@ -78,11 +78,11 @@ function processEvent(event) {
                           method: 'POST',
                           json: parameters
                     }, function (error, response, body) {
-                        console.log('body ----->: ',body);
+                       // console.log('body ----->: ',body);
                          
                        var json_action = JSON.parse(body);
                        // console.log('response ----->: ',response);
-                        console.log('body.step ----->: ',json_action.step.input_id);
+                        console.log('body.step ----->: ',json_action);
                          
                          
                          var splittedText = splitResponse(json_action.query);
