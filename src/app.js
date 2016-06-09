@@ -82,10 +82,10 @@ function processEvent(event) {
                          
                        var json_action = JSON.parse(body);
                        // console.log('response ----->: ',response);
-                        console.log('body.message ----->: ',json_action.message);
+                        console.log('body.step ----->: ',json_action.step);
                          
                          
-                         var splittedText = splitResponse(body);
+                         var splittedText = splitResponse(json_action.query);
                         
                             for (var i = 0; i < splittedText.length; i++) {
                                 sendFBMessage(sender, {text: splittedText[i]});
