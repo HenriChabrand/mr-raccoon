@@ -82,6 +82,14 @@ function processEvent(event) {
                        // console.log('response ----->: ',response);
                         console.log('body ----->: ',body);
                          console.log('body.message ----->: ',body.message);
+                         
+                         
+                         var splittedText = splitResponse(body);
+                        
+                            for (var i = 0; i < splittedText.length; i++) {
+                                sendFBMessage(sender, {text: splittedText[i]});
+                            }
+                            
                         if (error) {
                             console.log('Error sending message: ', error);
                         } else if (response.body.error) {
@@ -89,6 +97,7 @@ function processEvent(event) {
                         }
                     });
                     
+                    /*
                     if (isDefined(responseData) && isDefined(responseData.facebook)) {
                         try {
                             console.log('Response as formatted message');
@@ -105,7 +114,7 @@ function processEvent(event) {
                         for (var i = 0; i < splittedText.length; i++) {
                             sendFBMessage(sender, {text: splittedText[i]});
                         }
-                    }      
+                    }    */  
                    
                     
                 }
