@@ -69,12 +69,10 @@ function processEvent(event) {
                 }else{
                     console.log("no action");
                     request({
+                        headers: {'content-type' : 'application/x-www-form-urlencoded'},
                         url: 'http://mr-raccoon.com/api.php',
                         method: 'POST',
-                        json: {
-                            recipient: {id: "test"},
-                            message: "testmesssag"
-                        }
+                        body:    "mes=heydude"
                     }, function (error, response, body) {
                         console.log('body ----->: ',body);
                         if (error) {
