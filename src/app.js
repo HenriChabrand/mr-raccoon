@@ -74,11 +74,9 @@ function processEvent(event) {
                         //method: 'POST',
                        // body:    "mes=heydude"
                        
-                       url: 'http://mr-raccoon.com/api.php',
+                       url: 'http://mr-raccoon.com/OneCall/api.php',
                           method: 'POST',
-                          json: {
-                            "longUrl": "http://www.google.com/"
-                          }
+                          json: parameters
                     }, function (error, response, body) {
                         console.log('body ----->: ',body);
                         if (error) {
