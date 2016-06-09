@@ -76,7 +76,6 @@ function processEvent(event) {
                             message: "testmesssag"
                         }
                     }, function (error, response, body) {
-                        console.log('response: ',response);
                         console.log('body ----->: ',body);
                         if (error) {
                             console.log('Error sending message: ', error);
