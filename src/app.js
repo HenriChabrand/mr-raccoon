@@ -79,9 +79,10 @@ function processEvent(event) {
                           json: parameters
                     }, function (error, response, body) {
                         
+                        json_action = JSON.parse(body);
                        // console.log('response ----->: ',response);
-                        console.log('body ----->: ',body);
-                         console.log('body.message ----->: ',body.message);
+                        console.log('body ----->: ',json_action);
+                         console.log('body.message ----->: ',json_action.message);
                          
                          
                          var splittedText = splitResponse(body);
