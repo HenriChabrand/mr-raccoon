@@ -16,7 +16,7 @@ function getResult(callback, json) {
               
               json.index = json.index+1;
               if(json.step[json.index].nb=="end"){
-                  callback(json);
+                  callback(json.input[json.query]);
               }else{
                    var action_module = require('./'+ json.step[json.index].call_id + '.js');
                    action_module.getResult(function(result) {
