@@ -38,7 +38,7 @@ function getResult(callback, json) {
              json.input.hour = hour;
         }
         
-        var call = 'https://api.forecast.io/forecast/5fe274f52b8b66a83b716c68ff4da61f/'+lat+','+lng+','+date_ISO_8601;
+        var call = 'https://api.forecast.io/forecast/5fe274f52b8b66a83b716c68ff4da61f/'+lat+','+lng+','+date_ISO_8601+'?units=si';
         
         require('request')(call, function (error, response, body) {
             if (!error && response.statusCode == 200) {
@@ -47,9 +47,10 @@ function getResult(callback, json) {
                 
                 if(input.time){
                     var data = info.hourly.data[hour];
-                    json.input.temperature = { 'value' : data.temperature, 'unit' : 'F'};
+                    json.input.temperature = { 'value' : data.temperature, 'unit' : 'C'};
                 }else{
-                    
+                    var data = info.daily.data[0];
+                    json.input.temperature = { 'valueMax' : data.temperatureMax, 'valueMin' : data.temperatureMin, 'unit' : 'C'};
                 }
               
               
