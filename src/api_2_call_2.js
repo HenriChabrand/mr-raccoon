@@ -16,8 +16,10 @@ function getResult(callback, json) {
         var date_ISO_8601 = date + 'T';
         
         if(input.time){
-            var time = input.time;
-            date_ISO_8601 += time.toString();
+            console.log("input api_2_call_2 : ", input);
+            console.log("time api_2_call_2 : ");
+            //var time = input.time;
+            //date_ISO_8601 += time.toString();
         }else{
             date_ISO_8601 += '00:00:00';
         }
