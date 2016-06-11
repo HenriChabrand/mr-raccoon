@@ -81,7 +81,12 @@ function processEvent(event) {
                        // console.log('body ----->: ',body);
                          
                         var json_step = JSON.parse(body);
-                        sendFBMessage(sender, {text: body});
+                        
+                        var splittedBodyText = splitResponse(body);
+                            
+                        for (var i = 0; i < splittedBodyText.length; i++) {
+                            sendFBMessage(sender, {text: splittedBodyText[i]});
+                        }
                         
                         if(json_step.statut=="200"){
                             var action_module = require('./'+ json_step.step[json_step.index].call_id + '.js');
