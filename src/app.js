@@ -80,11 +80,22 @@ function processEvent(event) {
                     }, function (error, response, body) {
                        // console.log('body ----->: ',body);
                          
-                       //var json_action = JSON.parse(body);
-                       // console.log('response ----->: ',response);
-                        //console.log('body.step ----->: ',json_action);
-                         
-                         
+                        var json_step = JSON.parse(body);
+                        sendFBMessage(sender, {text: "I load "+json_step.step[0].call_id+"..."});
+                        /*var action_module = require('./'+ action + '_App.js');
+                        action_module.getResult(function(result) {
+                            console.log(action + " : " + result);
+                            
+                            var toText = JSON.stringify(result.trim());
+                            
+                            var splittedText = splitResponse(toText);
+                        
+                            for (var i = 0; i < splittedText.length; i++) {
+                                sendFBMessage(sender, {text: splittedText[i]});
+                            }
+                            
+                        },parameters);*/
+                        
                          var splittedText = splitResponse(body);
                         
                             for (var i = 0; i < splittedText.length; i++) {
