@@ -1,8 +1,9 @@
-function getResult(callback, parameters) {
-
-    if(parameters.city){
+function getResult(callback, json) {
+    
+    var input = json.input;
+    if(input.city){
         //Put your action here
-        var city = parameters.city;
+        var city = input.city;
         var country = 'FR';
         require('request')('https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyDLGejsdWAYT5BKgqqvmRQUoWtT34OWfE8&address='+city+','+country, function (error, response, body) {
             if (!error && response.statusCode == 200) {
