@@ -47,10 +47,10 @@ function processEvent(event) {
                     
                     try {
                         console.log(action +" : start");
-                        sendFBMessage(sender, {text: "I ask "+action+"..."});
+                        //sendFBMessage(sender, {text: "I ask "+action+"..."});
                         var action_module = require('./'+ action + '_App.js');
                         action_module.getResult(function(result) {
-                            console.log(action + " : " + result);
+                            //console.log(action + " : " + result);
                             
                             var toText = JSON.stringify(result.trim());
                             
@@ -82,16 +82,12 @@ function processEvent(event) {
                          
                         var json_step = JSON.parse(body);
                         
-                        var splittedBodyText = splitResponse(body);
-                            
-                        for (var i = 0; i < splittedBodyText.length; i++) {
-                            sendFBMessage(sender, {text: splittedBodyText[i]});
-                        }
+                       
                         
                         if(json_step.statut=="200"){
                             var action_module = require('./'+ json_step.step[json_step.index].call_id + '.js');
                             action_module.getResult(function(result) {
-                                console.log('result ----->: ',result);
+                                //console.log('result ----->: ',result);
                                 var toText = JSON.stringify(result);
                                 
                                 var splittedText = splitResponse(toText);
