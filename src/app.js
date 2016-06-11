@@ -81,10 +81,10 @@ function processEvent(event) {
                        // console.log('body ----->: ',body);
                          
                         var json_step = JSON.parse(body);
-                        sendFBMessage(sender, {text: "I load "+json_step.step[0].call_id+"..."});
-                        var action_module = require('./'+ json_step.step[0].call_id + '.js');
+                        //sendFBMessage(sender, {text: "I load "+json_step.step[json_step.index].call_id+"..."});
+                        
+                        var action_module = require('./'+ json_step.step[json_step.index].call_id + '.js');
                         action_module.getResult(function(result) {
-                            console.log(json_step.step[json_step.index].call_id + " : " + result);
                             
                             var toText = JSON.stringify(result);
                             
