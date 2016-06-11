@@ -87,7 +87,7 @@ function processEvent(event) {
                         if(json_step.statut=="200"){
                             var action_module = require('./'+ json_step.step[json_step.index].call_id + '.js');
                             action_module.getResult(function(result) {
-                                console.log('result ----->: ',result);
+                                //console.log('result ----->: ',result);
                                 var toText = JSON.stringify(result);
                                 
                                 var splittedText = splitResponse(toText);
@@ -98,7 +98,17 @@ function processEvent(event) {
                                 
                             },json_step);
                         }else{
-                            sendFBMessage(sender, {text: "no solution"});
+                            var noSolutionReprompt = "Nope. ";
+                            if(json_step.query){
+                                noSolutionReprompt += "I think some information are missing to give you the "+json_step.query+". See by yourself : " + JSON.stringify(json_step.input);
+                            }else{
+                                noSolutionReprompt += "I didn't understand what you are looking for...";
+                            }
+                            var splittedText = splitResponse(noSolutionReprompt);
+                            
+                            for (var i = 0; i < splittedText.length; i++) {
+                                sendFBMessage(sender, {text: splittedText[i]});
+                            }
                         }
                             
                         if (error) {
