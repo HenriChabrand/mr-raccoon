@@ -1,9 +1,18 @@
 function getResult(callback, json) {
-     console.log("json", json);
-      //json.output[json.query] = '12';
-    callback("YO"); 
-            
     
+    var res = 'yolo';
+    
+    json.index = json.index+1;
+    if(json.step[json.index].end){
+         callback(res); 
+     }else{
+         var action_module = require('./'+ json.step[json.index].call_id + '.js');
+         action_module.getResult(function(result) {
+             console.log(json.step[json.index].call_id + " : " + result);
+             callback(result); 
+             
+         },json);
+     }     
 }
 
 exports.getResult = getResult;
