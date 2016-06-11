@@ -19,7 +19,7 @@ function getResult(callback, json) {
             var time = input.time;
             date_ISO_8601 += time;
             
-            var hour_min_sec_str = timhour_min_sec_stre.split(":");
+            var hour_min_sec_str = time.split(":");
             var hour_str = hour_min_sec_str[0];
             var hour = parseInt(hour_str,10);
         }else{
