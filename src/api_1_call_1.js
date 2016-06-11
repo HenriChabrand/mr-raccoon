@@ -10,11 +10,11 @@ function getResult(callback, json) {
             if (!error && response.statusCode == 200) {
               var info = JSON.parse(body);
               json.input.geoCode = info.results[0].geometry.location;
-              
+              json.index = json.index+1;
               var action_module = require('./'+ json.step[json.index].call_id + '.js');
               action_module.getResult(function(result) {
                    
-                  json.index = json.index+1;
+                  
                   console.log(json.step[json.index].call_id + " : " + result);
                   
                   callback(result); 
