@@ -3,9 +3,8 @@ function getResult(callback, json) {
     console.log("Call made : api_2_call_2");
      
    
-    var res = 'yolo';
-    
-    
+    json.input.temperature = 23;
+    json.input.humidity = 0.67;
     
     json.index = json.index+1;
     if(json.step[json.index].nb=="end"){
