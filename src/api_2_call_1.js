@@ -8,7 +8,7 @@ function getResult(callback, json) {
         all_required = true;
     }
     if (all_required) {
-        var call = 'https://api.forecast.io/forecast/' + token + '/' + geoCode.lat + ',' + geoCode.lng + '?units=si';
+        var call = 'https://api.forecast.io/forecast/' + token + '/' + input.geoCode.lat + ',' + input.geoCode.lng + '?units=si';
         require('request')(call, function(error, response, body) {
             if (!error && response.statusCode == 200) {
                 var info = JSON.parse(body);
