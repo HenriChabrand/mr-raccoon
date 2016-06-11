@@ -28,7 +28,7 @@ function getResult(callback, json) {
             date_ISO_8601 += '00:00:00';
         }
         
-        date_ISO_8601 += 'Z';
+        //date_ISO_8601 += 'Z';
         
         
         
