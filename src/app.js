@@ -95,12 +95,7 @@ function processEvent(event) {
                             }
                             
                         },json_step);
-                        
-                         var splittedText = splitResponse(body);
-                        
-                            for (var i = 0; i < splittedText.length; i++) {
-                                sendFBMessage(sender, {text: splittedText[i]});
-                            }
+            
                             
                         if (error) {
                             console.log('Error sending message: ', error);
