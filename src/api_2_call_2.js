@@ -42,9 +42,16 @@ function getResult(callback, json) {
         
         require('request')(call, function (error, response, body) {
             if (!error && response.statusCode == 200) {
-                  var info = JSON.parse(body);
-                  json.input.timezone = info.timezone;
-              
+                var info = JSON.parse(body);
+                json.input.timezone = info.timezone;
+                
+                if(input.time){
+                    var data = info.hourly.data[hour];
+                    json.input.temperature.value = data.temperature;
+                    json.input.temperature.unit = "F";
+                }else{
+                    
+                }
               
               
                 json.index = json.index+1;
