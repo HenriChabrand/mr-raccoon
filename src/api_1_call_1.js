@@ -11,16 +11,17 @@ function getResult(callback, json) {
               var info = JSON.parse(body);
               json.input.geoCode = info.results[0].geometry.location;
               json.index = json.index+1;
-              var action_module = require('./'+ json.step[json.index].call_id + '.js');
-              action_module.getResult(function(result) {
-                   
-                  
-                  console.log(json.step[json.index].call_id + " : " + result);
-                  
-                  callback(result); 
-                  
-              },json);
-                        
+              
+              if(json.step[json.index].end){
+                   callback(json); 
+               }else{
+                   var action_module = require('./'+ json.step[json.index].call_id + '.js');
+                   action_module.getResult(function(result) {
+                       console.log(json.step[json.index].call_id + " : " + result);
+                       callback(result); 
+                       
+                   },json);
+               }         
                         
             }else{
                 callback("the request failed");
