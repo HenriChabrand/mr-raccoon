@@ -7,7 +7,9 @@ function getResult(callback, json) {
     var all_required = false;
     if(input.geoCode&&input.date){
         var date = input.date;
-        var geoCode = input.geoCode;
+        var lat = input.geoCode.lat;
+        var lng = input.geoCode.lng;
+        
         all_required = true;
     }
     
@@ -35,15 +37,32 @@ function getResult(callback, json) {
         if(input.time){
              json.input.hour = hour;
         }
-        json.index = json.index+1;
-        if(json.step[json.index].nb=="end"){
-            callback(json.input);
-        }else{
-             var action_module = require('./'+ json.step[json.index].call_id + '.js');
-             action_module.getResult(function(result) {
-                callback(result); 
-             },json);
-        }  
+        
+        var call = 'https://api.forecast.io/forecast/5fe274f52b8b66a83b716c68ff4da61f/'+lat+','+lng+','+date_ISO_8601;
+        
+        require('request')(call, function (error, response, body) {
+            if (!error && response.statusCode == 200) {
+                  var info = JSON.parse(body);
+                  json.input.timezone = info.timezone;
+              
+              
+              
+                json.index = json.index+1;
+                if(json.step[json.index].nb=="end"){
+                    callback(json.input);
+                }else{
+                     var action_module = require('./'+ json.step[json.index].call_id + '.js');
+                     action_module.getResult(function(result) {
+                        callback(result); 
+                     },json);
+                }          
+                        
+            }else{
+                callback("the request failed");
+            }
+          });
+        
+          
     } 
 }
 
