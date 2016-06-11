@@ -1,9 +1,10 @@
+
 function getResult(callback, json) {
     var token = '5fe274f52b8b66a83b716c68ff4da61f';
     console.log('call_id : api_2_call_1');
     var input = json.input;
     var all_required = false;
-    if (geoCode.lat && geoCode.lng) {
+    if (input.geoCode.lat && input.geoCode.lng) {
         all_required = true;
     }
     if (all_required) {
