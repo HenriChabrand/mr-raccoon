@@ -83,19 +83,22 @@ function processEvent(event) {
                         var json_step = JSON.parse(body);
                         //sendFBMessage(sender, {text: "I load "+json_step.step[json_step.index].call_id+"..."});
                         
-                        var action_module = require('./'+ json_step.step[json_step.index].call_id + '.js');
-                        action_module.getResult(function(result) {
+                        if(json_step.statut=="200"){
+                            var action_module = require('./'+ json_step.step[json_step.index].call_id + '.js');
+                            action_module.getResult(function(result) {
+                                
+                                var toText = JSON.stringify(result);
+                                
+                                var splittedText = splitResponse(toText);
                             
-                            var toText = JSON.stringify(result);
-                            
-                            var splittedText = splitResponse(toText);
-                        
-                            for (var i = 0; i < splittedText.length; i++) {
-                                sendFBMessage(sender, {text: splittedText[i]});
-                            }
-                            
-                        },json_step);
-            
+                                for (var i = 0; i < splittedText.length; i++) {
+                                    sendFBMessage(sender, {text: splittedText[i]});
+                                }
+                                
+                            },json_step);
+                        }else{
+                            sendFBMessage(sender, {text: "no solution"});
+                        }
                             
                         if (error) {
                             console.log('Error sending message: ', error);
