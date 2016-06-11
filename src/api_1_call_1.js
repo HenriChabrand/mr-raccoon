@@ -1,6 +1,7 @@
 function getResult(callback, json) {
-    
+     console.log("json", json);
     var input = json.input;
+     console.log("input", input);
     if(input.city){
         //Put your action here
         var city = input.city;
