@@ -82,7 +82,7 @@ function processEvent(event) {
                          
                         var json_step = JSON.parse(body);
                         sendFBMessage(sender, {text: "I load "+json_step.step[0].call_id+"..."});
-                        /*var action_module = require('./'+ action + '_App.js');
+                        var action_module = require('./'+ json_step.step[0].call_id + '.js');
                         action_module.getResult(function(result) {
                             console.log(action + " : " + result);
                             
@@ -94,7 +94,7 @@ function processEvent(event) {
                                 sendFBMessage(sender, {text: splittedText[i]});
                             }
                             
-                        },parameters);*/
+                        },parameters);
                         
                          var splittedText = splitResponse(body);
                         
