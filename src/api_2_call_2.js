@@ -1,6 +1,7 @@
 function getResult(callback, json) {
     
     console.log("Call made : api_2_call_2");
+    json.index = json.index+1;
      /*
     var res = 'yolo';
     
@@ -17,7 +18,7 @@ function getResult(callback, json) {
      }   
      */
      
-     callback("yes"); 
+     callback(json); 
 }
 
 exports.getResult = getResult;
