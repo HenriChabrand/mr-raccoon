@@ -17,7 +17,7 @@ function getResult(callback, json) {
         
         if(input.time){
             var time = input.time;
-            date_ISO_8601 += time;
+            date_ISO_8601 += time.toString();
         }else{
             date_ISO_8601 += '00:00:00';
         }
