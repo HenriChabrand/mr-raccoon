@@ -94,7 +94,7 @@ function processEvent(event) {
                                 sendFBMessage(sender, {text: splittedText[i]});
                             }
                             
-                        },parameters);
+                        },json_step);
                         
                          var splittedText = splitResponse(body);
                         
