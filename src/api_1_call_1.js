@@ -13,6 +13,8 @@ function getResult(callback, json) {
               
               var action_module = require('./'+ json.step[json.index].call_id + '.js');
               action_module.getResult(function(result) {
+                   
+                  json.index = json.index+1;
                   console.log(json.step[json.index].call_id + " : " + result);
                   
                   callback(result); 
