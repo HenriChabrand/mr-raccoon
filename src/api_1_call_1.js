@@ -14,7 +14,7 @@ function getResult(callback, json) {
               json.input.geoCode = info.results[0].geometry.location;
               json.index = json.index+1;
               
-              if(json.step[json.index].end){
+              if(json.step[json.index].nb=="end"){
                    callback(json); 
                }else{
                    var action_module = require('./'+ json.step[json.index].call_id + '.js');
