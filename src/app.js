@@ -87,7 +87,7 @@ function processEvent(event) {
                         if(json_step.statut=="200"){
                             var action_module = require('./'+ json_step.step[json_step.index].call_id + '.js');
                             action_module.getResult(function(result) {
-                                //console.log('result ----->: ',result);
+                                console.log('result ----->: ',result);
                                 var toText = JSON.stringify(result);
                                 
                                 var splittedText = splitResponse(toText);
