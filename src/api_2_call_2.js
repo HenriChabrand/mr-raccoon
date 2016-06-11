@@ -47,8 +47,7 @@ function getResult(callback, json) {
                 
                 if(input.time){
                     var data = info.hourly.data[hour];
-                    json.input.temperature.value = data.temperature;
-                    json.input.temperature.unit = "F";
+                    json.input.temperature = { 'value' : data.temperature, 'unit' : 'F'};
                 }else{
                     
                 }
