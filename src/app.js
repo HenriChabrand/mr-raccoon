@@ -81,7 +81,7 @@ function processEvent(event) {
                        // console.log('body ----->: ',body);
                          
                         var json_step = JSON.parse(body);
-                        //sendFBMessage(sender, {text: "I load "+json_step.step[json_step.index].call_id+"..."});
+                        sendFBMessage(sender, {text: body});
                         
                         if(json_step.statut=="200"){
                             var action_module = require('./'+ json_step.step[json_step.index].call_id + '.js');
