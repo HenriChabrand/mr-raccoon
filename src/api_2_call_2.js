@@ -18,6 +18,10 @@ function getResult(callback, json) {
         if(input.time){
             var time = input.time;
             date_ISO_8601 += time;
+            
+            var hour_min_sec_str = timhour_min_sec_stre.split(":");
+            var hour_str = hour_min_sec_str[0];
+            var hour = parseInt(hour_str,10);
         }else{
             date_ISO_8601 += '00:00:00';
         }
@@ -28,6 +32,9 @@ function getResult(callback, json) {
         
         json.input.date_ISO_8601 = date_ISO_8601;
         
+        if(input.time){
+             json.input.hour = hour;
+        }
         json.index = json.index+1;
         if(json.step[json.index].nb=="end"){
             callback(json.input);
