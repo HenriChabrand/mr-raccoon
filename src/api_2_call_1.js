@@ -19,10 +19,9 @@ function getResult(callback, json) {
                     //json.input.temperature.value = info.currently.temperature;
                 //}
                 
-               // if(!json.input.has('temperature')){
-                    json.input.temperature = {};
+                if(json.input.temperature){
                     json.input.temperature.unit = "C";
-                //}else{
+                }//else{
                //     json.input.temperature.unit = "C";
               //  }
                 
