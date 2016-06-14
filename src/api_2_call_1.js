@@ -13,13 +13,13 @@ function getResult(callback, json) {
                 var info = JSON.parse(body);
                 
                     
-                if(json.input.temperature){
+               /* if(json.input.temperature){
                     json.input.temperature.value = info.currently.temperature;
                 }else{
                     json.input.temperature = {};
                     json.input.temperature.value = info.currently.temperature;
                 }
-                
+                */
                 if(json.input.temperature){
                     if(json.input.temperature.unit){
                         json.input.temperature.unit.ISO = "C";
