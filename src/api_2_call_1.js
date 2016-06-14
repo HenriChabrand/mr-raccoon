@@ -21,10 +21,20 @@ function getResult(callback, json) {
                 }
                 
                 if(json.input.temperature){
-                    json.input.temperature.unit = "C";
+                    if(json.input.temperature.unit){
+                        json.input.temperature.unit.ISO = "C";
+                    }else{
+                        json.input.temperature.unit = {};
+                        json.input.temperature.unit.ISO = "C";
+                    }
                 }else{
                     json.input.temperature = {};
-                    json.input.temperature.unit = "C";
+                    if(json.input.temperature.unit){
+                        json.input.temperature.unit.ISO = "C";
+                    }else{
+                        json.input.temperature.unit = {};
+                        json.input.temperature.unit.ISO = "C";
+                    }
                 }
                 
                 json.index = json.index + 1;
