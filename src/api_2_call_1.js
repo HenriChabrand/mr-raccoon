@@ -12,19 +12,19 @@ function getResult(callback, json) {
             if (!error && response.statusCode == 200) {
                 var info = JSON.parse(body);
                 
-                if(!json.input.has('temperature')){
+                //if(!json.input.has('temperature')){
                     json.input.temperature = {};
                     json.input.temperature.value = info.currently.temperature;
-                }else{
-                    json.input.temperature.value = info.currently.temperature;
-                }
+              //  }else{
+                    //json.input.temperature.value = info.currently.temperature;
+                //}
                 
-                if(!json.input.has('temperature')){
+               // if(!json.input.has('temperature')){
                     json.input.temperature = {};
                     json.input.temperature.unit = "C";
-                }else{
-                    json.input.temperature.unit = "C";
-                }
+                //}else{
+               //     json.input.temperature.unit = "C";
+              //  }
                 
                 json.index = json.index + 1;
                 if (json.step[json.index].nb == 'end') {
