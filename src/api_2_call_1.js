@@ -11,7 +11,7 @@ function getResult(callback, json) {
         require('request')(call, function(error, response, body) {
             if (!error && response.statusCode == 200) {
                 var info = JSON.parse(body);
-                json.input.temperature.value = info.currently.temperature;
+                json.input.temperature = info.currently.temperature;
                 json.index = json.index + 1;
                 if (json.step[json.index].nb == 'end') {
                     callback(json.input[json.query]);
