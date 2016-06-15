@@ -20,11 +20,18 @@ function getResult(callback, json) {
                 if (!json.input.spotify.artist.external_urls) {
                     json.input.spotify.artist.external_urls = {};
                 }
-                json.input.spotify.artist.external_urls.spotify = info.artists.items[0].external.urls.spotify;
+                json.input.spotify.artist.external_urls.spotify = info.artists.items[0].external_urls.spotify;
                 if (!json.input.artist) {
                     json.input.artist = {};
                 }
                 json.input.artist.genre = info.artists.items[0].genres[0];
+                if (!json.input.spotify) {
+                    json.input.spotify = {};
+                }
+                if (!json.input.spotify.artist) {
+                    json.input.spotify.artist = {};
+                }
+                json.input.spotify.artist.href = info.artists.items[0].href;
                 if (!json.input.spotify) {
                     json.input.spotify = {};
                 }
