@@ -81,7 +81,7 @@ function processEvent(event) {
                        // console.log('body ----->: ',body);
                          
                         var json_step = JSON.parse(body);
-                        
+                        console.log('step ----->: ',json_step.step);
                        
                         
                         if(json_step.statut=="200"){
@@ -89,9 +89,9 @@ function processEvent(event) {
                             action_module.getResult(function(result) {
                                 //console.log('result ----->: ',result);
                                 var toText = JSON.stringify(result);
-                                
+                                console.log('result ----->: ',result);
                                 var splittedText = splitResponse(toText);
-                            
+                                
                                 for (var i = 0; i < splittedText.length; i++) {
                                     sendFBMessage(sender, {text: splittedText[i]});
                                 }
