@@ -153,12 +153,6 @@ function splitResponse(str) {
     {
         return [str];
     }
-
-    var result = chunkString(str, 300);
-    
-     for (var i = 0; i < result.length; i++) {
-        sendFBMessage(sender, {text: result[i]});
-    }
     return result;
 
 }
@@ -196,10 +190,10 @@ function chunkString(s, len)
 
 function sendFBMessage(sender, messageData) {
     
-    /*
-    var to_string = JSON.stringify(messageData);
-    var to_size = to_string.substring(0, 300);
-    */
+
+    var to_string = JSON.stringify(messageData.text);
+    var to_size = to_string.substring(0, 319);
+    
     
     request({
         url: 'https://graph.facebook.com/v2.6/me/messages',
@@ -207,7 +201,8 @@ function sendFBMessage(sender, messageData) {
         method: 'POST',
         json: {
             recipient: {id: sender},
-            message: messageData
+            //message: messageData
+            message: {text : to_size } 
         }
     }, function (error, response, body) {
         if (error) {
