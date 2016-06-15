@@ -81,7 +81,7 @@ function processEvent(event) {
                        // console.log('body ----->: ',body);
                          
                         var json_step = JSON.parse(body);
-                        console.log('step ----->: ',json_step.step);
+                        console.log('step ----->: ',json_step);
                        
                         
                         if(json_step.statut=="200"){
