@@ -204,8 +204,8 @@ function sendFBMessage(sender, messageData) {
         method: 'POST',
         json: {
             recipient: {id: sender},
-            //message: messageData
-            message: {text : to_size } 
+            message: messageData
+            //message: {text : to_size } 
         }
     }, function (error, response, body) {
         if (error) {
