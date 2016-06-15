@@ -24,7 +24,7 @@ function getResult(callback, json) {
                      if(json.input[json.query]){
                          callback(json.input[json.query]);
                      }else{
-                         callback(json.input);
+                         callback(json);
                      }
                     
                 } else {
