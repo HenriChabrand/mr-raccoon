@@ -50,11 +50,16 @@ function getResult(callback, json) {
                 json.input.artist.name = info.artists.items[0].name;
                 json.index = json.index + 1;
                 if (json.step[json.index].nb == 'end') {
-                   if(json.input[json.query]){
-                         callback(json.input[json.query]);
-                     }else{
-                         callback(json);
-                     }
+                    var query_array = json.query.split('.');
+                    var output = json.input;
+                    for(var i= 0; i < query_array.length; i++){
+                        output = output[query_array[i]];
+                    }
+                    if(output){
+                        callback(output);
+                    }else{
+                        callback(json.input);
+                    }
                 } else {
                     var action_module = require('./' + json.step[json.index].call_id + '.js');
                     action_module.getResult(function(result) {
