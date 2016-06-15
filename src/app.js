@@ -153,6 +153,9 @@ function splitResponse(str) {
     {
         return [str];
     }
+
+    var result = chunkString(str, 300);
+
     return result;
 
 }
