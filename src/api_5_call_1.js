@@ -49,7 +49,11 @@ function getResult(callback, json) {
                 json.input.artist.name = info.artists.items[0].name;
                 json.index = json.index + 1;
                 if (json.step[json.index].nb == 'end') {
-                    callback(json.input[json.query]);
+                   if(json.input[json.query]){
+                         callback(json.input[json.query]);
+                     }else{
+                         callback(json);
+                     }
                 } else {
                     var action_module = require('./' + json.step[json.index].call_id + '.js');
                     action_module.getResult(function(result) {
