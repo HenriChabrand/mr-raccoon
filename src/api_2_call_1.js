@@ -20,22 +20,18 @@ function getResult(callback, json) {
                     json.input.temperature.value = info.currently.temperature;
                 }
                 */
-                if(json.input.temperature){
-                    if(json.input.temperature.unit){
-                        json.input.temperature.unit.ISO = "C";
-                    }else{
-                        json.input.temperature.unit = {};
-                        json.input.temperature.unit.ISO = "C";
-                    }
-                }else{
+                if(!json.input.temperature){
                     json.input.temperature = {};
-                    if(json.input.temperature.unit){
-                        json.input.temperature.unit.ISO = "C";
-                    }else{
-                        json.input.temperature.unit = {};
-                        json.input.temperature.unit.ISO = "C";
-                    }
                 }
+                
+                if(!json.input.temperature.unit){
+                    json.input.temperature.unit = {};
+                }
+                
+                json.input.temperature.unit.ISO = "C";
+                  
+                
+                
                 
                 json.index = json.index + 1;
                 if (json.step[json.index].nb == 'end') {
