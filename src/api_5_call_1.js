@@ -8,6 +8,7 @@ function getResult(callback, json) {
     }
     if (all_required) {
         var call = 'https://api.spotify.com/v1/search?q=' + input.artistLike + '&type=artist';
+        call = encodeURI(call);
         require('request')(call, function(error, response, body) {
             if (!error && response.statusCode == 200) {
                 var info = JSON.parse(body);
