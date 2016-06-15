@@ -155,7 +155,10 @@ function splitResponse(str) {
     }
 
     var result = chunkString(str, 300);
-
+    
+     for (var i = 0; i < result.length; i++) {
+        sendFBMessage(sender, {text: result[i]});
+    }
     return result;
 
 }
