@@ -20,11 +20,16 @@ function getResult(callback, json) {
                 json.input.spotify.track.previewUrl = info.tracks[0].preview_url;
                 json.index = json.index + 1;
                 if (json.step[json.index].nb == 'end') {
-                     console.log('result : api_5_call_2 :',json.input);
-                     if(json.input[json.query]){
-                         callback(json.input[json.query]);
+                    console.log('result : api_5_call_2 :',json.input);
+                    var query_array = json.query.split('.');
+                    var output = json.input;
+                    for(var i= 0; i < query_array.length; i++){
+                        output = output[query_array[i]];
+                    }
+                     if(output){
+                         callback(output);
                      }else{
-                         callback(json);
+                         callback(json.input);
                      }
                     
                 } else {
