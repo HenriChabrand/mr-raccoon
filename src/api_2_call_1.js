@@ -76,8 +76,10 @@ function getResult(callback, json) {
                 if (json.step[json.index].nb == 'end') {
                     var query_array = json.query.split('.');
                     var output = json.input;
+                     console.log('api_2_call_1 :  res : ',output);
                     for (var i = 0; i < query_array.length; i++) {
                         output = output[query_array[i]];
+                        console.log('api_2_call_1 :  res : ',i,output);
                     }
                     if (output) {
                         callback(output);
