@@ -83,7 +83,7 @@ function processEvent(event) {
                         var json_step = JSON.parse(body);
                         console.log('step ----->: ',json_step);
                        
-                        
+                        /*
                         if(json_step.statut=="200"){
                             var action_module = require('./'+ json_step.step[json_step.index].call_id + '.js');
                             action_module.getResult(function(result) {
@@ -109,7 +109,7 @@ function processEvent(event) {
                             for (var i = 0; i < splittedText.length; i++) {
                                 sendFBMessage(sender, {text: splittedText[i]});
                             }
-                        }
+                        }*/
                             
                         if (error) {
                             console.log('Error sending message: ', error);
