@@ -82,7 +82,7 @@ function getResult(callback, json) {
                         console.log('api_2_call_1 :  res : ',i,output);
                     }
                     if (output) {
-                        callback(json.input);
+                        callback(json);
                     } else {
                         callback(json.input);
                     }
