@@ -88,6 +88,19 @@ function processEvent(event) {
                             var action_module = require('./'+ json_step.step[json_step.index].call_id + '.js');
                             action_module.getResult(function(result) {
                                 //console.log('result ----->: ',result);
+                                
+                                request({
+                        //headers: {'content-type' : 'application/x-www-form-urlencoded'},
+                        //url: 'http://mr-raccoon.com/api.php',
+                        //method: 'POST',
+                       // body:    "mes=heydude"
+                        headers: {'content-type' : 'Content-Type: application/json'},
+                       url: 'http://mr-raccoon.com/OneCall/apiContext.php',
+                          method: 'POST',
+                          json: result
+                    });
+                                
+                                
                                 var toText = JSON.stringify(result);
                                 console.log('result ----->: ',result);
                                 var splittedText = splitResponse(toText);
