@@ -99,16 +99,29 @@ function processEvent(event) {
                           method: 'POST',
                           json: result
                     });
-                                
-                                
-                                var toText = JSON.stringify(result);
-                                console.log('result ----->: ',result);
-                                var splittedText = splitResponse(toText);
-                                
-                                for (var i = 0; i < splittedText.length; i++) {
-                                    sendFBMessage(sender, {text: splittedText[i]});
+                                if(result.query){
+                                    var query_array = result.query.split('.');
+                                    var output = result.input;
+                                    for (var i = 0; i < query_array.length; i++) {
+                                        output = output[query_array[i]];
+                                    }
+                                    if (output) {
+                                        var toText = JSON.stringify(output);
+                                        var splittedText = splitResponse(toText);
+                                        
+                                        for (var i = 0; i < splittedText.length; i++) {
+                                            sendFBMessage(sender, {text: splittedText[i]});
+                                        }
+                                    }
+                                }else{
+                                    var toText = JSON.stringify(result);
+                                    console.log('result ----->: ',result);
+                                    var splittedText = splitResponse(toText);
+                                    
+                                    for (var i = 0; i < splittedText.length; i++) {
+                                        sendFBMessage(sender, {text: splittedText[i]});
+                                    }
                                 }
-                                
                             },json_step);
                         }else{
                             var noSolutionReprompt = "Nope. ";
